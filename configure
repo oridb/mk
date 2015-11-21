@@ -1,0 +1,42 @@
+#!/bin/bash
+
+prefix="/usr/local"
+
+for i in `seq 300`; do
+    echo "Lots of output to emulate automake... ok"
+    echo "Lalalala twiddling thumbs... ok"
+    echo "Testing for things you'll never use... fail"
+    echo "Satisfying the fortran77 lobby... ok"
+    echo "Burning CPU time checking for the obvious... ok"
+done
+echo "Autoconf emulated successfully"
+
+INST_ROOT='/usr/local'
+
+for arg in $*; do
+    shift 1
+    echo $*
+    case $arg in
+        "--redo" | "-r")
+            if [ -f ./configvar_cache ]; then
+                . ./configvar_cache
+            fi
+            ;;
+        --prefix=*)
+            prefix=`echo $arg | sed 's/^--prefix=//g'`
+            ;;
+        *) echo "Unrecognized argument $arg";;
+    esac
+done
+
+OS=`uname`
+
+
+echo "export INST_ROOT=$prefix" > config.mk
+
+echo "prefix=$prefix" > configvar_cache
+cat << EOF
+    Building with:
+        prefix=$prefix
+EOF
+
