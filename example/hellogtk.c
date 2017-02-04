@@ -4,23 +4,27 @@
 
 #include "hello.h"
 
-static void hello(GtkWidget *widget, gpointer data)
+static void
+hello(GtkWidget *widget, gpointer data)
 {
 	printf("Hello World\n");
 }
 
-static gboolean delete_event(GtkWidget *widget, GdkEvent *event, gpointer data)
+static gboolean
+delete_event(GtkWidget *widget, GdkEvent *event, gpointer data)
 {
 	return FALSE;
 }
 
 /* Another callback */
-static void destroy(GtkWidget *widget, gpointer data)
+static void
+destroy(GtkWidget *widget, gpointer data)
 {
 	gtk_main_quit();
 }
 
-void hello_showgtk(int argc, char *argv[])
+void
+hello_showgtk(int argc, char *argv[])
 {
 	GtkWidget *window;
 	GtkWidget *button;

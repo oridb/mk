@@ -3,7 +3,8 @@
 
 #include "hello.h"
 
-void hello_showargs(char **args, int nargs)
+void
+hello_showargs(char **args, int nargs)
 {
 	size_t i;
 
